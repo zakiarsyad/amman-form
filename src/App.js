@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import LoginPage from './Components/LoginPage';
 import LogoutPage from './Components/LogoutPage';
@@ -31,6 +31,10 @@ function App() {
   const handleLogoutClick = (event) => {
     setIsLoggedIn(false)
   }
+
+  useEffect(() => {
+    console.log('React hook is triggered!')
+  })
 
   if (isLoggedIn) {
     // Return logout button
