@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import './App.css';
+import LoginPage from './Components/LoginPage';
+import LogoutPage from './Components/LogoutPage';
 
 function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const handleUsernameChange = (event) => {
     // console.log('handleUsernameChange')
@@ -21,25 +24,29 @@ function App() {
 
     console.log(username)
     console.log(password)
+
+    setIsLoggedIn(true)
   }
 
-  return (
-    <div>
-      <form>
-        <div>
-          <label>username</label>
-          <input value={username} onChange={handleUsernameChange}></input>
-        </div>
+  const handleLogoutClick = (event) => {
+    setIsLoggedIn(false)
+  }
 
-        <div>
-          <label>password</label>
-          <input value={password} onChange={handlePasswordChange}></input>
-        </div>
-
-        <button onClick={handleLoginClick}>Login</button>
-      </form>
-    </div>
-  );
+  if (isLoggedIn) {
+    // Return logout button
+    return <LogoutPage
+      handleLogoutClick={handleLogoutClick}
+    />
+  } else {
+    // Return login form
+    return <LoginPage
+      username={username}
+      handleUsernameChange={handleUsernameChange}
+      password={password}
+      handlePasswordChange={handlePasswordChange}
+      handleLoginClick={handleLoginClick}
+    />
+  }
 }
 
 export default App;
