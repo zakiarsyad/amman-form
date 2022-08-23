@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
-import './App.css';
-import LoginPage from './Components/LoginPage';
-import LogoutPage from './Components/LogoutPage';
+import { useNavigate } from "react-router-dom";
+
+import './style.css';
+import LoginPage from '../../Components/LoginPage';
+import LogoutPage from '../../Components/LogoutPage';
 
 function App() {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -22,10 +26,14 @@ function App() {
     event.preventDefault();
     // console.log('handleLoginClick')
 
-    console.log(username)
-    console.log(password)
+    // console.log(username)
+    // console.log(password)
+
+    // Cek validasi username dan password
 
     setIsLoggedIn(true)
+
+    navigate('/profile')
   }
 
   const handleLogoutClick = (event) => {
@@ -33,7 +41,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('React hook is triggered!')
+    // console.log('React hook is triggered!')
   })
 
   if (isLoggedIn) {
