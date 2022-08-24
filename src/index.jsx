@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './Containers/App';
 import Profile from './Containers/Profile';
+import Profiles from './Containers/Profiles';
+import Hello from './Containers/Hello';
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
@@ -17,6 +19,8 @@ root.render(
     <Routes>
       <Route path='/login' element={<App />}></Route>
       <Route path='/profile' element={<Profile />}></Route>
+      <Route path='/profiles/:id' element={<Profiles />}></Route>
+      <Route path='/hello/:name' element={<Hello />}></Route>
     </Routes>
   </BrowserRouter>
 );
